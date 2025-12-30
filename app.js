@@ -81,7 +81,7 @@ app.delete("/listings/:id", async (req, res) => {
 });
 // root route
 app.get("/", (req, res) => {
-  res.send("hi i am root");
+  res.redirect("/listings");
 });
 
 // app.get("/testListing", async (req, res) => {
@@ -97,6 +97,8 @@ app.get("/", (req, res) => {
 //   console.log("sample was saved");
 //   res.send("success");
 // });
+
+
 
 //server start
 app.listen(8080, (req, res) => {

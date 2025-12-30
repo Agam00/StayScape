@@ -132,3 +132,17 @@ body {
   padding-left: 0;
   padding-right: 0;
 }
+
+/*footer */
+
+.fa-linkedin {
+  color: #0A66C2;
+}
+
+.fa-github {
+  color: #181717;
+}
+
+.fa-x-twitter {
+  color: #000000;
+}
