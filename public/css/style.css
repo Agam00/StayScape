@@ -148,5 +148,17 @@ body {
 }
 
 .review-card {
-  border: 2px solid black !important;
+  border: 2px solid gray !important;
+  height: fit-content !important;
 }
+
+@media screen and (max-width: 800px) {
+  .review-card {
+    
+    display: flex !important;
+    flex-flow: column !important;
+    width: 100% !important;   /* important: override col-5 */
+    
+  }
+}
+
