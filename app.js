@@ -1,3 +1,7 @@
+if (process.env.NODE_ENV != "production") {
+  require("dotenv").config();
+}
+
 // importing (exprees,mongoose,listing models(local),path)
 const express = require("express");
 const app = express();
