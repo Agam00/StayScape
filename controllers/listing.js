@@ -1,4 +1,6 @@
 const Listing = require("../models/listing.js");
+const fetch = require("node-fetch");
+
 
 module.exports.index = async (req, res) => {
   const allListings = await Listing.find({});
