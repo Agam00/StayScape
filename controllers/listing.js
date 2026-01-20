@@ -1,4 +1,5 @@
 const Listing = require("../models/listing.js");
+require("dotenv").config();
 
 module.exports.index = async (req, res) => {
   const allListings = await Listing.find({});
@@ -30,20 +31,10 @@ module.exports.createNewListing = async (req, res, next) => {
   let url = req.file.path;
   let filename = req.file.filename;
   let query = `${req.body.listing.location},${req.body.listing.country}`;
-  // const baseUrl = process.env.MAP_URL;
-  // const mapUrl = `${baseUrl}&q=${encodeURIComponent(query)}`;
-  const result = await fetch(
-    `https://nominatim.openstreetmap.org/search?format=json&limit=1&q=${encodeURIComponent(query)}`,
-    {
-      headers: {
-        "User-Agent": "StayScape/1.0 (contact: agamarora@example.com)",
-      },
-    },
-  );
+  const baseUrl = process.env.MAP_URL;
+  const mapUrl = `${baseUrl}&q=${encodeURIComponent(query)}`;
+  const result = await fetch(mapUrl);
   const data = await result.json();
-  if (!result.ok) {
-    console.error("Geocoding failed:", result.status, result.statusText);
-  }
 
   let lat = 31.634;
   let lng = 74.8723;
@@ -77,20 +68,13 @@ module.exports.updateListing = async (req, res) => {
   let { id } = req.params;
   let listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing });
   let query = `${req.body.listing.location},${req.body.listing.country}`;
-  // const baseUrl = process.env.MAP_URL;
-  // const mapUrl = `${baseUrl}&q=${encodeURIComponent(query)}`;
-  const result = await fetch(
-    `https://nominatim.openstreetmap.org/search?format=json&limit=1&q=${encodeURIComponent(query)}`,
-    {
-      headers: {
-        "User-Agent": "StayScape/1.0 (contact: agamarora@example.com)",
-      },
-    },
-  );
+  const baseUrl = process.env.MAP_URL;
+  const mapUrl = `${baseUrl}&q=${encodeURIComponent(query)}`;
+  const result = await fetch(mapUrl);
   const data = await result.json();
   if (data.length > 0) {
-    let lat = Number(data[0].lat);
-    let lng = Number(data[0].lon);
+    lat = Number(data[0].lat);
+    lng = Number(data[0].lon);
     listing.geometry = { lat, lng };
     await listing.save();
   }
