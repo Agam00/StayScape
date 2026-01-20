@@ -365,8 +365,14 @@ body {
     min-width: 64px;
   }
 
+
+/* tax button */
   #tax-toggle {
     padding: 10px 14px;
     font-size: 13px;
   }
+}
+
+.taxes{
+  display: none;
 }
