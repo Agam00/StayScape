@@ -26,14 +26,14 @@ const filters = document.getElementById("filters");
 
 document.getElementById("scrollLeft").addEventListener("click", () => {
   filters.scrollBy({
-    left: -220,
+    left: -120,
     behavior: "smooth",
   });
 });
 
 document.getElementById("scrollRight").addEventListener("click", () => {
   filters.scrollBy({
-    left: 220,
+    left: 120,
     behavior: "smooth",
   });
 });

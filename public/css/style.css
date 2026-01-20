@@ -24,17 +24,24 @@ body {
 .nav-link {
   color: #222 !important;
 }
-/* SEARCH BAR CONTAINER */
+/* =========================
+   SEARCH BAR CONTAINER
+========================= */
 .search-bar {
   background: #ffffff;
   border-radius: 50px;
   padding: 6px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
   box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
   border: 1px solid rgba(26, 188, 156, 0.3);
   transition: all 0.3s ease;
 }
 
-/* INPUT FIELD */
+/* =========================
+   INPUT FIELD
+========================= */
 .search-input {
   border: none;
   outline: none;
@@ -43,13 +50,16 @@ body {
   border-radius: 50px;
   font-size: 15px;
   color: #333;
+  background: transparent;
 }
 
 .search-input::placeholder {
   color: #999;
 }
 
-/* BUTTON */
+/* =========================
+   SEARCH BUTTON
+========================= */
 .search-btn {
   background: #1abc9c;
   border: none;
@@ -61,6 +71,7 @@ body {
   align-items: center;
   justify-content: center;
   cursor: pointer;
+  flex-shrink: 0;
   transition: all 0.3s ease;
 }
 
@@ -68,23 +79,51 @@ body {
   font-size: 16px;
 }
 
-/* HOVER EFFECT */
+/* HOVER */
 .search-btn:hover {
   background: #17a589;
 }
 
-/* FOCUS EFFECT */
+/* =========================
+   FOCUS EFFECT
+========================= */
 .search-bar:focus-within {
   box-shadow: 0 10px 30px rgba(26, 188, 156, 0.35);
   border-color: #1abc9c;
 }
 
-/* RESPONSIVE */
-@media (max-width: 768px) {
+/* =========================
+   TABLET RESPONSIVE
+========================= */
+@media (max-width: 992px) {
   .search-input {
-    width: 160px;
+    width: 180px;
   }
 }
+
+/* =========================
+   MOBILE / NAVBAR COLLAPSE
+   (Bootstrap toggle menu)
+========================= */
+@media (max-width: 768px) {
+  /* When inside collapsed navbar */
+  .navbar-collapse .search-bar {
+    width: 100%;
+    padding: 8px;
+    margin-top: 12px;
+  }
+
+  .navbar-collapse .search-input {
+    width: 100%;
+    font-size: 14px;
+  }
+
+  .navbar-collapse .search-btn {
+    width: 40px;
+    height: 40px;
+  }
+}
+
 
 /* Footer */
 
@@ -221,8 +260,9 @@ body {
   }
 }
 
-/* filters */
-
+/* =========================
+   FILTERS WRAPPER
+========================= */
 .filters-wrapper {
   display: flex;
   align-items: center;
@@ -231,7 +271,9 @@ body {
   position: relative;
 }
 
-/* ===== ARROWS ===== */
+/* =========================
+   SCROLL ARROWS
+========================= */
 .scroll-arrow {
   width: 42px;
   height: 42px;
@@ -261,14 +303,16 @@ body {
   color: #fff;
 }
 
-/* ===== FILTER LIST ===== */
+/* =========================
+   FILTER LIST
+========================= */
 #filters {
   display: flex;
   gap: 1.8rem;
   flex: 1;
   overflow-x: auto;
   scroll-behavior: smooth;
-  padding: 12px 16px; /* prevents hover clipping */
+  padding: 12px 16px;
   white-space: nowrap;
   scrollbar-width: none;
 }
@@ -277,7 +321,9 @@ body {
   display: none;
 }
 
-/* ===== FILTER ITEM ===== */
+/* =========================
+   FILTER ITEM
+========================= */
 .filter {
   min-width: 72px;
   text-align: center;
@@ -328,7 +374,9 @@ body {
   box-shadow: 0 8px 20px rgba(26, 188, 156, 0.35);
 }
 
-/* ===== TAX TOGGLE ===== */
+/* =========================
+   TAX TOGGLE
+========================= */
 #tax-toggle {
   padding: 12px 18px;
   background: #ffffff;
@@ -348,27 +396,50 @@ body {
   border-color: #1abc9c;
 }
 
-/* ===== MOBILE ===== */
+/* =========================
+   HIDDEN TAX TEXT
+========================= */
+.taxes {
+  display: none;
+}
+
+/* =========================
+   MOBILE RESPONSIVENESS
+========================= */
 @media (max-width: 768px) {
+  .filters-wrapper {
+    flex-wrap: wrap;
+    row-gap: 12px;
+  }
+
   .scroll-arrow {
     width: 36px;
     height: 36px;
+    order: 0;
+  }
+
+  #filters {
+    order: 1;
+    width: 100%;
   }
 
   .filter {
     min-width: 64px;
   }
 
-  /* tax button */
+  /* TAX TOGGLE ON NEXT LINE */
   #tax-toggle {
+    order: 2;
+    width: 100%;
     padding: 10px 14px;
     font-size: 13px;
+    display: flex;
+    justify-content: center;
+    border-radius: 999px;
+    background: #f9f9f9;
   }
 }
 
-.taxes {
-  display: none;
-}
 
 /* map */
 #map {
