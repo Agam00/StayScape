@@ -30,9 +30,9 @@ module.exports.createNewListing = async (req, res, next) => {
   let url = req.file.path;
   let filename = req.file.filename;
   let query = `${req.body.listing.location},${req.body.listing.country}`;
-  const baseUrl = process.env.MAP_URL;
-  const mapUrl = `${baseUrl}&q=${encodeURIComponent(query)}`;
-  const result = await fetch(mapUrl);
+  // const baseUrl = process.env.MAP_URL;
+  // const mapUrl = `${baseUrl}&q=${encodeURIComponent(query)}`;
+  const result = await fetch(`https://nominatim.openstreetmap.org/search?format=json&limit=1&q=${encodeURIComponent(query)}`);
   const data = await result.json();
 
   let lat = 31.634;
@@ -67,9 +67,11 @@ module.exports.updateListing = async (req, res) => {
   let { id } = req.params;
   let listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing });
   let query = `${req.body.listing.location},${req.body.listing.country}`;
-  const baseUrl = process.env.MAP_URL;
-  const mapUrl = `${baseUrl}&q=${encodeURIComponent(query)}`;
-  const result = await fetch(mapUrl);
+  // const baseUrl = process.env.MAP_URL;
+  // const mapUrl = `${baseUrl}&q=${encodeURIComponent(query)}`;
+  const result = await fetch(
+    `https://nominatim.openstreetmap.org/search?format=json&limit=1&q=${encodeURIComponent(query)}`,
+  );
   const data = await result.json();
   if (data.length > 0) {
     lat = Number(data[0].lat);
