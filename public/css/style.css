@@ -84,10 +84,7 @@ body {
   .search-input {
     width: 160px;
   }
-
-
 }
-
 
 /* Footer */
 
@@ -218,16 +215,13 @@ body {
 
 @media screen and (max-width: 800px) {
   .review-card {
-    
     display: flex !important;
     flex-flow: column !important;
-    width: 100% !important;   /* important: override col-5 */
-    
+    width: 100% !important; /* important: override col-5 */
   }
 }
 
 /* filters */
-
 
 .filters-wrapper {
   display: flex;
@@ -248,7 +242,7 @@ body {
   align-items: center;
   justify-content: center;
   cursor: pointer;
-  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
   transition: all 0.25s ease;
   flex-shrink: 0;
 }
@@ -274,7 +268,7 @@ body {
   flex: 1;
   overflow-x: auto;
   scroll-behavior: smooth;
-  padding: 12px 16px;   /* prevents hover clipping */
+  padding: 12px 16px; /* prevents hover clipping */
   white-space: nowrap;
   scrollbar-width: none;
 }
@@ -331,7 +325,7 @@ body {
   background: #1abc9c;
   color: #ffffff;
   border-color: #1abc9c;
-  box-shadow: 0 8px 20px rgba(26,188,156,0.35);
+  box-shadow: 0 8px 20px rgba(26, 188, 156, 0.35);
 }
 
 /* ===== TAX TOGGLE ===== */
@@ -340,7 +334,7 @@ body {
   background: #ffffff;
   border: 1px solid #e5e5e5;
   border-radius: 16px;
-  box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
   white-space: nowrap;
 }
 
@@ -365,14 +359,28 @@ body {
     min-width: 64px;
   }
 
-
-/* tax button */
+  /* tax button */
   #tax-toggle {
     padding: 10px 14px;
     font-size: 13px;
   }
 }
 
-.taxes{
+.taxes {
   display: none;
+}
+
+/* map */
+#map {
+  width: 100%;
+  max-width: 900px;
+  height: 400px;
+  margin: auto;
+}
+
+@media (max-width: 768px) {
+  #map {
+    height: 300px;
+    
+  }
 }

@@ -29,10 +29,23 @@ module.exports.showListing = async (req, res) => {
 module.exports.createNewListing = async (req, res, next) => {
   let url = req.file.path;
   let filename = req.file.filename;
+  let query = `${req.body.listing.location},${req.body.listing.country}`;
+  const baseUrl = process.env.MAP_URL;
+  const mapUrl = `${baseUrl}&q=${encodeURIComponent(query)}`;
+  const result = await fetch(mapUrl);
+  const data = await result.json();
+
+  let lat = 31.634;
+  let lng = 74.8723;
+  if (data.length > 0) {
+    lat = Number(data[0].lat);
+    lng = Number(data[0].lon);
+  }
 
   const newListing = new Listing(req.body.listing);
   newListing.owner = req.user._id;
   newListing.image = { url, filename };
+  newListing.geometry = { lat, lng };
   await newListing.save();
   req.flash("success", "New listing is created!");
   res.redirect("/listings");
@@ -47,12 +60,23 @@ module.exports.listingEditForm = async (req, res) => {
   }
   let orignalImageUrl = listing.image.url;
   orignalImageUrl = orignalImageUrl.replace("/upload", "/upload/w_200");
-  res.render("listings/edit.ejs", { listing ,orignalImageUrl});
+  res.render("listings/edit.ejs", { listing, orignalImageUrl });
 };
 
 module.exports.updateListing = async (req, res) => {
   let { id } = req.params;
   let listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing });
+  let query = `${req.body.listing.location},${req.body.listing.country}`;
+  const baseUrl = process.env.MAP_URL;
+  const mapUrl = `${baseUrl}&q=${encodeURIComponent(query)}`;
+  const result = await fetch(mapUrl);
+  const data = await result.json();
+  if (data.length > 0) {
+    lat = Number(data[0].lat);
+    lng = Number(data[0].lon);
+    listing.geometry = { lat, lng };
+    await listing.save();
+  }
 
   if (typeof req.file !== "undefined") {
     let url = req.file.path;

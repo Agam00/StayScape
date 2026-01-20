@@ -1,5 +1,8 @@
 <% layout("/layouts/boilerplate") %>
-<body>
+<script>
+  const listing= <%- JSON.stringify(listing) %>;
+</script>
+
   <div class="row mt-3">
     <div class="col-8 offset-3">
       <h3><%= listing.title %></h3>
@@ -35,6 +38,7 @@
       </form>
       <% } %>
     </div>
+     
     <% if(currUser) {%>
     <div class="col-8 offset-3 mb-3">
       <hr />
@@ -78,6 +82,7 @@
       </form>
     </div>
     <% } %>
+    <% if(listing.reviews.length>0){ %>
     <div class="col-8 offset-3 row">
       <hr />
       <h4>All Reviews</h4>
@@ -100,5 +105,12 @@
       </div>
       <% } %>
     </div>
+    <% } %>
+    <div class="col-8 offset-3 mt-3 mb-3">
+      <h3>Where you'll be</h3>
+      <div id="map" ></div>
+    </div>
   </div>
-</body>
+
+<script src="/js/map.js"></script>
+
