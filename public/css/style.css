@@ -24,6 +24,70 @@ body {
 .nav-link {
   color: #222 !important;
 }
+/* SEARCH BAR CONTAINER */
+.search-bar {
+  background: #ffffff;
+  border-radius: 50px;
+  padding: 6px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  border: 1px solid rgba(26, 188, 156, 0.3);
+  transition: all 0.3s ease;
+}
+
+/* INPUT FIELD */
+.search-input {
+  border: none;
+  outline: none;
+  padding: 10px 16px;
+  width: 220px;
+  border-radius: 50px;
+  font-size: 15px;
+  color: #333;
+}
+
+.search-input::placeholder {
+  color: #999;
+}
+
+/* BUTTON */
+.search-btn {
+  background: #1abc9c;
+  border: none;
+  color: #fff;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.search-btn i {
+  font-size: 16px;
+}
+
+/* HOVER EFFECT */
+.search-btn:hover {
+  background: #17a589;
+}
+
+/* FOCUS EFFECT */
+.search-bar:focus-within {
+  box-shadow: 0 10px 30px rgba(26, 188, 156, 0.35);
+  border-color: #1abc9c;
+}
+
+/* RESPONSIVE */
+@media (max-width: 768px) {
+  .search-input {
+    width: 160px;
+  }
+
+
+}
+
 
 /* Footer */
 
@@ -162,3 +226,147 @@ body {
   }
 }
 
+/* filters */
+
+
+.filters-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  padding: 1rem 0;
+  position: relative;
+}
+
+/* ===== ARROWS ===== */
+.scroll-arrow {
+  width: 42px;
+  height: 42px;
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.08);
+  transition: all 0.25s ease;
+  flex-shrink: 0;
+}
+
+.scroll-arrow i {
+  font-size: 14px;
+  color: #444;
+}
+
+.scroll-arrow:hover {
+  background: #1abc9c;
+  border-color: #1abc9c;
+}
+
+.scroll-arrow:hover i {
+  color: #fff;
+}
+
+/* ===== FILTER LIST ===== */
+#filters {
+  display: flex;
+  gap: 1.8rem;
+  flex: 1;
+  overflow-x: auto;
+  scroll-behavior: smooth;
+  padding: 12px 16px;   /* prevents hover clipping */
+  white-space: nowrap;
+  scrollbar-width: none;
+}
+
+#filters::-webkit-scrollbar {
+  display: none;
+}
+
+/* ===== FILTER ITEM ===== */
+.filter {
+  min-width: 72px;
+  text-align: center;
+  font-size: 13px;
+  color: #555;
+  opacity: 0.75;
+  cursor: pointer;
+  transition: all 0.25s ease;
+}
+
+/* ICON */
+.filter .icon {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  border: 1px solid #e5e5e5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 6px;
+  font-size: 18px;
+  background: #fff;
+  transition: all 0.25s ease;
+}
+
+/* HOVER */
+.filter:hover {
+  opacity: 1;
+}
+
+.filter:hover .icon {
+  transform: translateY(-6px);
+  border-color: #1abc9c;
+  color: #1abc9c;
+}
+
+/* ACTIVE */
+.filter.active {
+  opacity: 1;
+  color: #1abc9c;
+  font-weight: 500;
+}
+
+.filter.active .icon {
+  background: #1abc9c;
+  color: #ffffff;
+  border-color: #1abc9c;
+  box-shadow: 0 8px 20px rgba(26,188,156,0.35);
+}
+
+/* ===== TAX TOGGLE ===== */
+#tax-toggle {
+  padding: 12px 18px;
+  background: #ffffff;
+  border: 1px solid #e5e5e5;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.06);
+  white-space: nowrap;
+}
+
+.form-check-label {
+  font-size: 14px;
+  color: #444;
+}
+
+.form-check-input:checked {
+  background-color: #1abc9c;
+  border-color: #1abc9c;
+}
+
+/* ===== MOBILE ===== */
+@media (max-width: 768px) {
+  .scroll-arrow {
+    width: 36px;
+    height: 36px;
+  }
+
+  .filter {
+    min-width: 64px;
+  }
+
+  #tax-toggle {
+    padding: 10px 14px;
+    font-size: 13px;
+  }
+}

@@ -9,15 +9,13 @@ const upload = multer({ storage });
 
 const { isLoggedIn, isOwner, validateListing } = require("../middleware.js");
 
-router
-  .route("/")
-  .get(wrapAsync(listingController.index))
-  .post(
-    isLoggedIn,
-    validateListing,
-    upload.single("listing[image]"),
-    wrapAsync(listingController.createNewListing),
-  );
+router.route("/").get(wrapAsync(listingController.index)).post(
+  isLoggedIn,
+  upload.single("listing[image]"),
+  validateListing,
+
+  wrapAsync(listingController.createNewListing),
+);
 
 // new route
 router.get("/new", isLoggedIn, listingController.newListingForm);
@@ -28,7 +26,9 @@ router
   .put(
     isLoggedIn,
     isOwner,
+    upload.single("listing[image]"),
     validateListing,
+
     wrapAsync(listingController.updateListing),
   )
   .delete(isLoggedIn, isOwner, wrapAsync(listingController.deleteListing));

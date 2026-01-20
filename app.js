@@ -59,7 +59,7 @@ const sessionOptions = {
 
 // root route
 app.get("/", (req, res) => {
-  res.send("root route");
+  res.redirect("/listings");
 });
 
 app.use(session(sessionOptions));
@@ -78,16 +78,6 @@ app.use((req, res, next) => {
   res.locals.currUser = req.user;
   next();
 });
-
-// //demouser test
-// app.get("/demouser", async (req, res) => {
-//   let fakeUser = new User({
-//     email: "student@gmail.com",
-//     username: "Agam",
-//   });
-//   let registerUser = await User.register(fakeUser, "password");
-//   console.log(registerUser);
-// });
 
 //listings routes
 app.use("/listings", listingRoute);
