@@ -6,53 +6,95 @@
     <i class="fa-solid fa-chevron-left"></i>
   </button>
 
-  <!-- SCROLLABLE FILTERS -->
+
   <div id="filters">
-    <div class="filter active">
-      <div class="icon"><i class="fa-solid fa-fire"></i></div>
-      <p>Trending</p>
-    </div>
 
-    <div class="filter">
-      <div class="icon"><i class="fa-solid fa-bed"></i></div>
-      <p>Rooms</p>
-    </div>
+  <!-- ALL -->
+  <a href="/listings"
+     class="filter <%= !selectedCategory ? 'active' : '' %>">
+    <div class="icon"><i class="fa-solid fa-fire"></i></div>
+    <p>ALL</p>
+  </a>
 
-    <div class="filter">
-      <div class="icon"><i class="fa-solid fa-house"></i></div>
-      <p>Entire Home</p>
-    </div>
+  <!-- ROOMS -->
+  <a href="/listings?category=Rooms"
+     class="filter <%= selectedCategory === 'Rooms' ? 'active' : '' %>">
+    <div class="icon"><i class="fa-solid fa-bed"></i></div>
+    <p>Rooms</p>
+  </a>
 
-    <div class="filter">
-      <div class="icon"><i class="fa-solid fa-water"></i></div>
-      <p>Beachfront</p>
-    </div>
+  <!-- ENTIRE HOME -->
+  <a href="/listings?category=Entire Home"
+     class="filter <%= selectedCategory === 'Entire Home' ? 'active' : '' %>">
+    <div class="icon"><i class="fa-solid fa-house"></i></div>
+    <p>Entire Home</p>
+  </a>
 
-    <div class="filter">
-      <div class="icon"><i class="fa-solid fa-mountain"></i></div>
-      <p>Mountains</p>
-    </div>
+  <!-- BEACHFRONT -->
+  <a href="/listings?category=Beachfront"
+     class="filter <%= selectedCategory === 'Beachfront' ? 'active' : '' %>">
+    <div class="icon"><i class="fa-solid fa-water"></i></div>
+    <p>Beachfront</p>
+  </a>
 
-    <div class="filter">
-      <div class="icon"><i class="fa-solid fa-city"></i></div>
-      <p>City</p>
-    </div>
+  <!-- MOUNTAINS -->
+  <a href="/listings?category=Mountains"
+     class="filter <%= selectedCategory === 'Mountains' ? 'active' : '' %>">
+    <div class="icon"><i class="fa-solid fa-mountain"></i></div>
+    <p>Mountains</p>
+  </a>
 
-    <div class="filter">
-      <div class="icon"><i class="fa-solid fa-tree"></i></div>
-      <p>Nature</p>
-    </div>
+  <!-- CITY -->
+  <a href="/listings?category=City"
+     class="filter <%= selectedCategory === 'City' ? 'active' : '' %>">
+    <div class="icon"><i class="fa-solid fa-city"></i></div>
+    <p>City</p>
+  </a>
 
-    <div class="filter">
-      <div class="icon"><i class="fa-solid fa-snowflake"></i></div>
-      <p>Cold Places</p>
-    </div>
+  <!-- NATURE -->
+  <a href="/listings?category=Nature"
+     class="filter <%= selectedCategory === 'Nature' ? 'active' : '' %>">
+    <div class="icon"><i class="fa-solid fa-leaf"></i></div>
+    <p>Nature</p>
+  </a>
 
-    <div class="filter">
-      <div class="icon"><i class="fa-solid fa-wifi"></i></div>
-      <p>Work Friendly</p>
-    </div>
-  </div>
+  <!-- COLD PLACES -->
+  <a href="/listings?category=Cold Places"
+     class="filter <%= selectedCategory === 'Cold Places' ? 'active' : '' %>">
+    <div class="icon"><i class="fa-solid fa-snowflake"></i></div>
+    <p>Cold</p>
+  </a>
+
+  <!-- LUXURY -->
+  <a href="/listings?category=Luxury"
+     class="filter <%= selectedCategory === 'Luxury' ? 'active' : '' %>">
+    <div class="icon"><i class="fa-solid fa-gem"></i></div>
+    <p>Luxury</p>
+  </a>
+
+  <!-- BUDGET -->
+  <a href="/listings?category=Budget Friendly"
+     class="filter <%= selectedCategory === 'Budget Friendly' ? 'active' : '' %>">
+    <div class="icon"><i class="fa-solid fa-wallet"></i></div>
+    <p>Budget</p>
+  </a>
+
+  <!-- PET FRIENDLY -->
+  <a href="/listings?category=Pet Friendly"
+     class="filter <%= selectedCategory === 'Pet Friendly' ? 'active' : '' %>">
+    <div class="icon"><i class="fa-solid fa-paw"></i></div>
+    <p>Pets</p>
+  </a>
+
+  <!-- UNIQUE STAYS -->
+  <a href="/listings?category=Unique Stays"
+     class="filter <%= selectedCategory === 'Unique Stays' ? 'active' : '' %>">
+    <div class="icon"><i class="fa-solid fa-star"></i></div>
+    <p>Unique</p>
+  </a>
+
+</div>
+
 
   <!-- RIGHT ARROW -->
   <button class="scroll-arrow right" id="scrollRight">
@@ -97,8 +139,8 @@
   </div>
 
 <script>
-  let toggle=document.getElementById("switchCheckDefault");
-  toggle.addEventListener("click",()=>{
+  let toggle=document.getElementById("filter");
+  filter.addEventListener("click",()=>{
     let taxes= document.getElementsByClassName("taxes");
 
     for(tax of taxes){
@@ -110,3 +152,18 @@
     };
   });
 </script>
+<!-- <script>
+  const filters = document.querySelectorAll(".filter");
+
+  filters.forEach(filter => {
+    filter.addEventListener("click", () => {
+
+      // remove active from all
+      filters.forEach(f => f.classList.remove("active"));
+
+      // add active to clicked one
+      filter.classList.add("active");
+
+    });
+  });
+</script> -->

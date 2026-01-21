@@ -15,11 +15,13 @@
       />
       <div class="card-body mt-3">
         <div class="card-text">
-         <p>Owned by <i><%=listing.owner.username %></i></p> 
-           <p><%= listing.description %></p>
-           <p>&#8377; <%= listing.price.toLocaleString("en-IN") %></p>
-           <p><%= listing.location %></p>
-           <p><%= listing.country %></p>
+         <p>Posted by:<i>@<%=listing.owner.username %></i></p> 
+  
+           <p><i>Description: </i><br><%= listing.description %></p>
+           <p> <i>Price:</i> <br>&#8377; <%= listing.price.toLocaleString("en-IN") %></p>
+           <p><i>City:</i><br><%= listing.location %></p>
+           <p><i>Country:</i><br><%= listing.country %></p>
+           <p><i>Category:</i><br><%= listing.categories %></p>
         </div>
       </div>
     </div>

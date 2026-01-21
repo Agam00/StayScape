@@ -1,9 +1,30 @@
 const Listing = require("../models/listing.js");
 require("dotenv").config();
 
+// module.exports.index = async (req, res) => {
+//   const allListings = await Listing.find({});
+//   res.render("listings/index.ejs", { allListings });
+// };
 module.exports.index = async (req, res) => {
-  const allListings = await Listing.find({});
-  res.render("listings/index.ejs", { allListings });
+  const { category, search } = req.query;
+
+  let allListings;
+  if (search) {
+    allListings = await Listing.find({ title: search });
+  } else {
+    if (category) {
+      allListings = await Listing.find({ categories: category });
+      console.log(allListings);
+      console.log(category);
+    } else {
+      allListings = await Listing.find({});
+    }
+  }
+
+  res.render("listings/index.ejs", {
+    allListings,
+    selectedCategory: category,
+  });
 };
 
 module.exports.newListingForm = (req, res) => {

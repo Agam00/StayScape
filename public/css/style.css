@@ -124,7 +124,6 @@ body {
   }
 }
 
-
 /* Footer */
 
 .f-info-links a {
@@ -332,6 +331,7 @@ body {
   opacity: 0.75;
   cursor: pointer;
   transition: all 0.25s ease;
+  text-decoration: none;
 }
 
 /* ICON */
@@ -440,7 +440,6 @@ body {
   }
 }
 
-
 /* map */
 #map {
   width: 100%;
@@ -452,6 +451,5 @@ body {
 @media (max-width: 768px) {
   #map {
     height: 300px;
-    
   }
 }

@@ -1,8 +1,6 @@
 if (process.env.NODE_ENV != "production") {
   require("dotenv").config();
 }
-console.log("Node version:", process.version);
-
 
 // importing (exprees,mongoose,listing models(local),path)
 const express = require("express");

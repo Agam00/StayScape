@@ -19,11 +19,13 @@
         
       </div>
       <div class="navbar-nav ms-auto">
-  <form class="search-bar d-flex align-items-center" role="search">
+  <form class="search-bar d-flex align-items-center" role="search" method="get"
+        action="/listings">
     <input 
+      name="search"
       class="search-input" 
       type="search" 
-      placeholder="Search destinations" 
+      placeholder="Search by name" 
       aria-label="Search"
     />
     <button class="search-btn" type="submit">
