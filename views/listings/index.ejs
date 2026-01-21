@@ -139,8 +139,8 @@
   </div>
 
 <script>
-  let toggle=document.getElementById("filter");
-  filter.addEventListener("click",()=>{
+  let toggle=document.getElementById("switchCheckDefault");
+  toggle.addEventListener("click",()=>{
     let taxes= document.getElementsByClassName("taxes");
 
     for(tax of taxes){
@@ -152,18 +152,4 @@
     };
   });
 </script>
-<!-- <script>
-  const filters = document.querySelectorAll(".filter");
 
-  filters.forEach(filter => {
-    filter.addEventListener("click", () => {
-
-      // remove active from all
-      filters.forEach(f => f.classList.remove("active"));
-
-      // add active to clicked one
-      filter.classList.add("active");
-
-    });
-  });
-</script> -->

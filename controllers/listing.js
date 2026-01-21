@@ -1,16 +1,14 @@
 const Listing = require("../models/listing.js");
 require("dotenv").config();
 
-// module.exports.index = async (req, res) => {
-//   const allListings = await Listing.find({});
-//   res.render("listings/index.ejs", { allListings });
-// };
 module.exports.index = async (req, res) => {
   const { category, search } = req.query;
 
   let allListings;
   if (search) {
-    allListings = await Listing.find({ title: search });
+    allListings = await Listing.find({
+      location: { $regex: search, $options: "i" },
+    });
   } else {
     if (category) {
       allListings = await Listing.find({ categories: category });
