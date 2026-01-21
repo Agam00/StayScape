@@ -30,9 +30,9 @@ module.exports.showListing = async (req, res) => {
 module.exports.createNewListing = async (req, res, next) => {
   let url = req.file.path;
   let filename = req.file.filename;
+  let apiKey = process.env.MAP_API;
   let query = `${req.body.listing.location},${req.body.listing.country}`;
-  const baseUrl = process.env.MAP_URL;
-  const mapUrl = `${baseUrl}&q=${encodeURIComponent(query)}`;
+  const mapUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=5&appid=${apiKey}`;
   const result = await fetch(mapUrl);
   const data = await result.json();
 
@@ -66,10 +66,10 @@ module.exports.listingEditForm = async (req, res) => {
 
 module.exports.updateListing = async (req, res) => {
   let { id } = req.params;
+  let apiKey = process.env.MAP_API;
   let listing = await Listing.findByIdAndUpdate(id, { ...req.body.listing });
   let query = `${req.body.listing.location},${req.body.listing.country}`;
-  const baseUrl = process.env.MAP_URL;
-  const mapUrl = `${baseUrl}&q=${encodeURIComponent(query)}`;
+  const mapUrl = `http://api.openweathermap.org/geo/1.0/direct?q=${query}&limit=5&appid=${apiKey}`;
   const result = await fetch(mapUrl);
   const data = await result.json();
   if (data.length > 0) {
