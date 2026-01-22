@@ -6,8 +6,9 @@ module.exports.index = async (req, res) => {
 
   let allListings;
   if (search) {
+     const trimmedSearch = search.trim();
     allListings = await Listing.find({
-      location: { $regex: search, $options: "i" },
+      location: { $regex: trimmedSearch , $options: "i" },
     });
   } else {
     if (category) {

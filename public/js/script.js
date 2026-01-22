@@ -22,19 +22,36 @@
   });
 })();
 
+// document.getElementById("scrollLeft").addEventListener("click", () => {
+//   filters.scrollBy({
+//     left: -120,
+//     behavior: "smooth",
+//   });
+// });
+
+// document.getElementById("scrollRight").addEventListener("click", () => {
+//   filters.scrollBy({
+//     left: 120,
+//     behavior: "smooth",
+//   });
+// });
+
 const filters = document.getElementById("filters");
+const scrollLeft = document.getElementById("scrollLeft");
+const scrollRight = document.getElementById("scrollRight");
 
-document.getElementById("scrollLeft").addEventListener("click", () => {
-  filters.scrollBy({
-    left: -120,
-    behavior: "smooth",
+if (filters && scrollLeft && scrollRight) {
+  scrollLeft.addEventListener("click", () => {
+    filters.scrollBy({
+      left: -120,
+      behavior: "smooth",
+    });
   });
-});
 
-document.getElementById("scrollRight").addEventListener("click", () => {
-  filters.scrollBy({
-    left: 120,
-    behavior: "smooth",
+  scrollRight.addEventListener("click", () => {
+    filters.scrollBy({
+      left: 120,
+      behavior: "smooth",
+    });
   });
-});
-
+}
