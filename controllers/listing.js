@@ -6,9 +6,9 @@ module.exports.index = async (req, res) => {
 
   let allListings;
   if (search) {
-     const trimmedSearch = search.trim();
+    const trimmedSearch = search.trim();
     allListings = await Listing.find({
-      location: { $regex: trimmedSearch , $options: "i" },
+      location: { $regex: trimmedSearch, $options: "i" },
     });
   } else {
     if (category) {
@@ -115,4 +115,14 @@ module.exports.deleteListing = async (req, res) => {
   req.flash("success", "listing Deleted!");
   console.log(deletedListing);
   res.redirect("/listings");
+};
+
+module.exports.listingVisit = async (req, res) => {
+  let { id } = req.params;
+
+  await Listing.findByIdAndUpdate(id, {
+    $addToSet: { requests: req.user._id },
+  });
+  req.flash("success", "Requested Successfully");
+  res.redirect(`/listings/${id}`);
 };

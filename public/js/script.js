@@ -22,19 +22,7 @@
   });
 })();
 
-// document.getElementById("scrollLeft").addEventListener("click", () => {
-//   filters.scrollBy({
-//     left: -120,
-//     behavior: "smooth",
-//   });
-// });
 
-// document.getElementById("scrollRight").addEventListener("click", () => {
-//   filters.scrollBy({
-//     left: 120,
-//     behavior: "smooth",
-//   });
-// });
 
 const filters = document.getElementById("filters");
 const scrollLeft = document.getElementById("scrollLeft");

@@ -23,6 +23,7 @@ router.get("/new", isLoggedIn, listingController.newListingForm);
 router
   .route("/:id")
   .get(wrapAsync(listingController.showListing))
+  .post(isLoggedIn, wrapAsync(listingController.listingVisit))
   .put(
     isLoggedIn,
     isOwner,
@@ -31,6 +32,7 @@ router
 
     wrapAsync(listingController.updateListing),
   )
+
   .delete(isLoggedIn, isOwner, wrapAsync(listingController.deleteListing));
 
 //edit route
