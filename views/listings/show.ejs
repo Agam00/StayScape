@@ -44,12 +44,14 @@
     </div>
      
     <% if(currUser) {%>
+      <% if(!currUser._id.equals(listing.owner._id)) {%>
       <% if(listing.requests.includes(currUser._id)) {%>
         <p class="offset-3">Already Requested</p>
         <% }else{ %>
       <form action="/listings/<%=listing._id %>" method="POST">
         <button class="btn btn-dark offset-3">request a visit</button>
       </form>
+      <% } %>
       <% } %>
       
     <div class="col-8 offset-3 mb-3">
