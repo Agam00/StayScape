@@ -1,4 +1,5 @@
 const Listing = require("../models/listing.js");
+const User = require("../models/user.js");
 require("dotenv").config();
 
 module.exports.index = async (req, res) => {
@@ -125,4 +126,26 @@ module.exports.listingVisit = async (req, res) => {
   });
   req.flash("success", "Requested Successfully");
   res.redirect(`/listings/${id}`);
+};
+
+module.exports.yourListing = async (req, res) => {
+  const owner = req.user._id;
+  const allListings = await Listing.find({});
+  res.render("listings/yourListings.ejs", { owner, allListings });
+};
+
+module.exports.enquiry = async (req, res) => {
+  try {
+    const ownerId = req.user._id;
+
+    const ownerListings = await Listing.find({ owner: ownerId }).populate(
+      "requests",
+      "username email",
+    );
+
+    res.render("listings/enquiry.ejs", { ownerListings });
+  } catch (err) {
+    console.log(err);
+    res.redirect("/listings");
+  }
 };

@@ -1,0 +1,32 @@
+<% layout("/layouts/boilerplate") %>
+
+<div class="container mt-4">
+  <h2>Your Enquiries</h2>
+
+  <% if (ownerListings.length === 0) { %>
+    <p>No enquiries yet.</p>
+  <% } %>
+
+  <% ownerListings.forEach(listing => { %>
+
+    <% if (listing.requests.length > 0) { %>
+
+      <div class="card mb-4 p-3">
+        <h4>Listing: <%= listing.title %></h4>
+        <hr>
+
+        <% listing.requests.forEach(user => { %>
+          <div class="mb-2">
+            <strong>Name:</strong> <%= user.username %> <br>
+            <strong>Email:</strong> <%= user.email %> <br>
+            <strong>Enquired For:</strong> <%= listing.title %>
+          </div>
+          <hr>
+        <% }) %>
+
+      </div>
+
+    <% } %>
+
+  <% }) %>
+</div>

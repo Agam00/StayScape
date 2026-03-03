@@ -18,6 +18,8 @@ router.route("/").get(wrapAsync(listingController.index)).post(
 );
 
 // new route
+router.get("/enquiries", isLoggedIn, listingController.enquiry);
+router.get("/yourListings", isLoggedIn, listingController.yourListing);
 router.get("/new", isLoggedIn, listingController.newListingForm);
 
 router

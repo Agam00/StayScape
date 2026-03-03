@@ -17,6 +17,7 @@
         
         <a class="nav-link" href="/listings">Explore</a>
         
+        
       </div>
       <div class="navbar-nav ms-auto">
   <form class="search-bar d-flex align-items-center" role="search" method="get"
@@ -42,6 +43,8 @@
         <a class="nav-link" href="/login"><b>Login</b></a>
         <% } %>
         <% if(currUser) {%>
+          <a class="nav-link" href="/listings/enquiries">Enquires</a>
+        <a class="nav-link" href="/listings/yourListings">Your Listings</a>
         <a class="nav-link" href="/logout"> <b>Logout</b></a>
         <% } %>
       </div>
